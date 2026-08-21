@@ -7,8 +7,7 @@
 [![SQL](https://img.shields.io/badge/SQL-MySQL_%7C_3NF_Schema-4479A1?logo=mysql&logoColor=white&style=for-the-badge)](https://www.mysql.com/)
 [![Python](https://img.shields.io/badge/Python-Pandas_%7C_NumPy-3776AB?logo=python&logoColor=white&style=for-the-badge)](https://www.python.org/)
 
-> **Live Portfolio:** [shiksha2303.github.io/Portfolio](https://shiksha2303.github.io/Portfolio/) *(or your deployed domain)*
-
+> **Live Portfolio:** https://portfolio-shikshasondik-23.vercel.app/
 A modern, responsive, and performance-optimized portfolio website showcasing full-stack engineering and data analytics capabilities. Built with **React 18**, **Tailwind CSS**, and **Recharts**, featuring an interactive Business Intelligence console, verified projects, and an interactive ATS-compatible resume viewer.
 
 ---
