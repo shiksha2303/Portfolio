@@ -122,7 +122,6 @@ To run this project locally on your machine:
 
 * **Author:** Shiksha Sondik
 * **Email:** [shikshasondik@gmail.com](mailto:shikshasondik@gmail.com)
-* **Phone:** +91-7858941197
 * **LinkedIn:** [linkedin.com/in/shiksha-sondik-3449a8233](https://www.linkedin.com/in/shiksha-sondik-3449a8233/)
 * **GitHub:** [github.com/shiksha2303](https://github.com/shiksha2303)
 
