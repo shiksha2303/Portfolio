@@ -19,11 +19,19 @@ export const Contact = ({ onOpenResume }) => {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [formStatus, setFormStatus] = useState(null); // 'success' | 'error' | null
+  const nameInputRef = React.useRef(null);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(personal.email);
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2000);
+  };
+
+  const handleRequestCall = () => {
+    if (nameInputRef.current) {
+      nameInputRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      nameInputRef.current.focus();
+    }
   };
 
   const handleSubmit = (e) => {
@@ -109,28 +117,29 @@ export const Contact = ({ onOpenResume }) => {
             {/* Direct Channels Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
               
-              {/* Phone */}
-              <div className="glass-card p-4 border border-slate-800">
-                <div className="flex items-center space-x-2 text-xs text-slate-400 font-mono mb-1">
-                  <Phone className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>Phone / WhatsApp</span>
+              {/* Request a Call */}
+              <button
+                type="button"
+                onClick={handleRequestCall}
+                className="glass-card-hover p-4 border border-slate-800 flex items-center justify-between group w-full cursor-pointer"
+                title="Request a call via the message form"
+              >
+                <div className="flex items-center space-x-2.5">
+                  <Phone className="w-4 h-4 text-cyan-400" />
+                  <span className="text-xs font-semibold text-white group-hover:text-cyan-300 transition-colors">
+                    Request a Call
+                  </span>
                 </div>
-                <a
-                  href={`tel:${personal.phone}`}
-                  className="text-sm font-semibold text-white hover:text-cyan-300 transition-colors font-mono"
-                >
-                  {personal.phone}
-                </a>
-              </div>
+                <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-cyan-400 transition-colors" />
+              </button>
 
               {/* Location */}
-              <div className="glass-card p-4 border border-slate-800">
-                <div className="flex items-center space-x-2 text-xs text-slate-400 font-mono mb-1">
-                  <MapPin className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>Location</span>
-                </div>
-                <div className="text-sm font-semibold text-white">
-                  {personal.location}
+              <div className="glass-card p-4 border border-slate-800 flex items-center justify-between">
+                <div className="flex items-center space-x-2.5">
+                  <MapPin className="w-4 h-4 text-cyan-400" />
+                  <span className="text-xs font-semibold text-white">
+                    {personal.location}
+                  </span>
                 </div>
               </div>
 
@@ -138,19 +147,14 @@ export const Contact = ({ onOpenResume }) => {
               <a
                 href={personal.linkedin}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="glass-card-hover p-4 border border-slate-800 flex items-center justify-between group"
               >
                 <div className="flex items-center space-x-2.5">
                   <LinkedinIcon className="w-4 h-4 text-[#0A66C2]" />
-                  <div>
-                    <div className="text-xs font-semibold text-white group-hover:text-cyan-300">
-                      LinkedIn
-                    </div>
-                    <div className="text-[11px] text-slate-400 truncate max-w-[120px]">
-                      in/shiksha-sondik
-                    </div>
-                  </div>
+                  <span className="text-xs font-semibold text-white group-hover:text-cyan-300 transition-colors">
+                    LinkedIn
+                  </span>
                 </div>
                 <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-cyan-400 transition-colors" />
               </a>
@@ -159,19 +163,14 @@ export const Contact = ({ onOpenResume }) => {
               <a
                 href={personal.github}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="glass-card-hover p-4 border border-slate-800 flex items-center justify-between group"
               >
                 <div className="flex items-center space-x-2.5">
                   <GithubIcon className="w-4 h-4 text-white" />
-                  <div>
-                    <div className="text-xs font-semibold text-white group-hover:text-cyan-300">
-                      GitHub
-                    </div>
-                    <div className="text-[11px] text-slate-400 truncate max-w-[120px]">
-                      github.com/shiksha2303
-                    </div>
-                  </div>
+                  <span className="text-xs font-semibold text-white group-hover:text-cyan-300 transition-colors">
+                    GitHub
+                  </span>
                 </div>
                 <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-cyan-400 transition-colors" />
               </a>
@@ -237,6 +236,7 @@ export const Contact = ({ onOpenResume }) => {
                       Your Name <span className="text-cyan-400">*</span>
                     </label>
                     <input
+                      ref={nameInputRef}
                       type="text"
                       required
                       placeholder="Jane Doe"
